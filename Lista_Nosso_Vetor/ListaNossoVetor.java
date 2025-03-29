@@ -78,33 +78,152 @@ public class ListaNossoVetor{
         return elementoRemovido;
     }
 
-        // FIZZ
-        public int removePrimeiraOcorrencia(int i, int valor) throws Exception {
-            if (estaVazio()) {
-                throw new VetorVazioException("Vetor vazio, não há o que analisar");
-            } 
-            else {
-                for (i = 0; i < ocupacao; i++) {
-                    if (vetor[i] == valor){
-                        int elementoRemovido = vetor[i];
+    // FIZZ
+    public int removePrimeiraOcorrencia(int i, int valor) throws Exception {
+        if (estaVazio()) {
+            throw new VetorVazioException("Vetor vazio, não há o que analisar");
+        } 
+        else {
+            for (i = 0; i < ocupacao; i++) {
+                if (vetor[i] == valor){
+                    int elementoRemovido = vetor[i];
 
-                        for (int j = i; j < ocupacao - 1; j++) {
-                            vetor[j] = vetor[j + 1];
-                        }
-            
-                        vetor[ocupacao - 1] = 0;
-                        ocupacao--;
-
-                        if (vetor.length >= 6 && ocupacao <= vetor.length / 4) {
-                            redimensionaVetor(vetor.length / 2);
-                        }
-
-                        return i;
+                    for (int j = i; j < ocupacao - 1; j++) {
+                        vetor[j] = vetor[j + 1];
                     }
+        
+                    vetor[ocupacao - 1] = 0;
+                    ocupacao--;
+
+                    if (vetor.length >= 6 && ocupacao <= vetor.length / 4) {
+                        redimensionaVetor(vetor.length / 2);
+                    }
+
+                    return i;
                 }
             }
-            throw new Exception("Elemento " + valor + " não encontrado.");
         }
+        throw new Exception("Elemento " + valor + " não encontrado.");
+    }
+
+    // FIZZ
+    public int removerTodasOcorrencias(int index, int valor) {
+        if (estaVazio()) {
+            throw new VetorVazioException("Vetor vazio, não há o que analisar");
+        } 
+        int contadorRemovidos = 0;
+
+        for (int i = 0; i < ocupacao; ) {
+            if (vetor[i] == valor) {
+                // Remove o elemento deslocando os subsequentes
+                for (int j = i; j < ocupacao - 1; j++) {
+                    vetor[j] = vetor[j + 1];
+                }
+                vetor[ocupacao - 1] = 0;
+                ocupacao--;
+                contadorRemovidos++;
+
+                if (vetor.length >= 6 && ocupacao <= vetor.length / 4) {
+                    redimensionaVetor(vetor.length / 2);
+                }
+            } else {
+                i++; 
+            }
+        }
+    return contadorRemovidos; 
+    }
+
+
+    // FIZZ
+    public int devolvePrimeiraOcorrencia(int i, int valor) throws Exception {
+        if (estaVazio()) {
+            throw new VetorVazioException("Vetor vazio, não há o que analisar");
+        } 
+        else {
+            for (i = 0; i < ocupacao; i++) {
+                if (vetor[i] == valor){
+                    return i;
+                }
+            }
+        }
+        throw new Exception("Elemento " + valor + " não encontrado.");
+    }
+
+
+    // FIZZ
+    public void esvaziarLista() {
+        if (estaVazio()) {
+            throw new VetorVazioException("Vetor vazio, não há o que analisar");
+        } 
+        for (int i = 0; i < ocupacao; i++) {
+            vetor[i] = 0;
+        }
+        ocupacao = 0;
+    }
+
+
+    // FIZZ
+    public int copiaListaDupla (int valor) {
+        if (estaVazio()) {
+            throw new VetorVazioException("Vetor vazio, não há o que analisar");
+        } 
+        for (int i = 0; i < ocupacao; i++) {
+            if (vetor[i] == valor) {
+                return vetor[i];
+            }
+        }
+        throw new ElementoNaoEcontradoException("Elemento " + valor + " não encontrado."); // Throw exception if not found
+    }
+
+    // FIZZ
+    public int somarElementos() {
+        if (estaVazio()) {
+            throw new VetorVazioException("Vetor vazio, não há o que analisar");
+        } 
+        int soma = 0;
+        for (int i = 0; i < ocupacao; i++) {
+            soma += vetor[i];
+        }
+        return soma;
+    }
+
+    // FIZZ
+    public int tamanhoLista() {
+        if (estaVazio()) {
+            throw new VetorVazioException("Vetor vazio, não há o que analisar");
+        } 
+        return ocupacao;
+    }
+
+    // FIZZ
+    public int maiorElemento() {
+        if (estaVazio()) {
+            throw new VetorVazioException("Vetor vazio, não há o que analisar");
+        } 
+        int maior = vetor[0];
+        for (int i = 1; i < ocupacao; i++) {
+            if (vetor[i] > maior) {
+                maior = vetor[i];
+            }
+        }
+        return maior;
+    }
+
+    // FIZZ
+    public int posicaoMaiorElemento() {
+        if (estaVazio()) {
+            throw new VetorVazioException("Vetor vazio, não há o que analisar");
+        } 
+        int maior = vetor[0];
+        int posicao = 0;
+        for (int i = 1; i < ocupacao; i++) {
+            if (vetor[i] > maior) {
+                maior = vetor[i];
+                posicao = i;
+            }
+        }
+        return posicao;
+    }
 
 
     public boolean estaCheio() {
