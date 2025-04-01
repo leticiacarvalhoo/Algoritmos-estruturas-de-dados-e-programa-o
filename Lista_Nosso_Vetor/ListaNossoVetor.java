@@ -225,6 +225,30 @@ public class ListaNossoVetor{
         return posicao;
     }
 
+    // FIZZ
+    public int menorElementoPosicaoZero() {
+        int aux;
+        if (estaVazio()) {
+            throw new VetorVazioException("Vetor vazio, não há o que analisar");
+        } 
+        int menor = vetor[0];
+        for (int i = 1; i < ocupacao; i++) {
+            if (vetor[i] < menor) {
+                menor = vetor[i];
+                aux = vetor[0];
+                vetor[0] = menor;
+                vetor[i] = aux;
+            }
+        }
+        return menor;
+    }
+
+
+    //FIZ
+    public long mesclarVetores(int[] vetor1, int[] vetor2) {
+        for ()
+    }
+
 
     public boolean estaCheio() {
         return ocupacao == vetor.length;
