@@ -5,15 +5,24 @@ public class Pilha {
     public Pilha(){
         this(10);
     }
+    public int getTopo() {
+        return topo;
+        
+    }
+    public int setTopo(int topo) {
+        this.topo = topo;
+        
+        return topo;
+    }
     public Pilha(int capacidade){
-        topo = 0;
+        setTopo(0);
         dados = new int[capacidade];
     }
     public boolean pilhaVazia (){
-        return topo == 0;
+        return getTopo() == 0;
     }
     public boolean pilhaCheia(){
-        return topo == dados.length;
+        return getTopo() == dados.length;
     }
     public boolean push (int elemento) {
         if (pilhaCheia()) return false;
@@ -22,11 +31,11 @@ public class Pilha {
     }
     public int pop(){
         if (pilhaVazia()) return -1;
-        return dados[--topo];
+        return dados[setTopo(getTopo() - 1)];
     }
     public int peak(){
         if (pilhaVazia()) return -1;
         // não estmos reduzindo o topo, só consultando
-        return dados[topo-1];
+        return dados[getTopo()-1];
     }
 }
