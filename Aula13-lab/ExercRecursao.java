@@ -6,9 +6,6 @@ public class ExercRecursao {
         while (n>1){
             f = f*n--;
         }
-        // for (int i=2; i <= n; i++){
-        //     f = f *i;
-        // }
         return f;
     }
 
@@ -37,7 +34,6 @@ public class ExercRecursao {
         if (n1 == 1) return n2;
         return n2 + multipRec(n1-1, n2);
     }
-
 
     static void exibe1aNv1(int i, int n){
         // em memoria, esse é bem mais eficientge (recursão de cauda)

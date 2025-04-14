@@ -31,7 +31,7 @@ public class Pilha {
     }
     public int pop(){
         if (pilhaVazia()) return -1;
-        return dados[setTopo(getTopo() - 1)];
+        return dados[--topo];
     }
     public int peak(){
         if (pilhaVazia()) return -1;
