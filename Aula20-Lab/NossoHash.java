@@ -28,4 +28,45 @@ public class NossoHash<K, V> {
             }
         }
     }
+    public V get(K key){
+        int indice = hash(key);
+        Entrada<K, V> atual = tabela[indice];
+        while(atual != null){
+            //pergunta de segurança. Temos sempre que verificar se ele não é nulo
+            if (atual.key.equals(key)){
+                return atual.value;
+            }
+            atual = atual.proximo;
+        }
+        return null;
+    }
+    public boolean isEmpty(){
+        for (int i=0; i<capacidade; i++){
+            Entrada<K, V> atual = tabela[i];
+            if (atual != null)
+                return false;
+        }
+        return true;
+    }
+    public boolean containsKey(K key){
+        int indice = hash(key);
+        Entrada<K, V> atual = tabela[indice];
+        while (atual != null){
+            if (atual.key.equals(key))
+                return true;
+            atual = atual.proximo;
+        }
+        return false;
+    }
+    public boolean containsValue(V value){
+        for (int i=0; i<capacidade; i++){
+            Entrada<K, V> atual = tabela[i];
+            while (atual != null) {
+                if (atual.value.equals(value))
+                    return true;
+            }
+            atual = atual.proximo;
+        }
+        return false;
+    }
 }
