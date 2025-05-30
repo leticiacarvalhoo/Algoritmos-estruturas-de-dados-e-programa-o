@@ -19,7 +19,7 @@ public class ArvoreBinaria {
             raiz = new NoOcorrencias(info);
         }
         else{
-            raiz = new NoOcorrencias(info);
+            insereOcorrenciasRec(info, raiz);
         }
     }
 
@@ -168,4 +168,7 @@ public class ArvoreBinaria {
         }
         return sucNo;
     }
+
+
+
 }
